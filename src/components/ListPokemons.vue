@@ -12,7 +12,7 @@ const pokemon = defineProps(["name", "url"])
                 <div class="card-body">
                 <h5 class="card-title">{{ pokemon.name }}</h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Informações</a>
+                <a :href= pokemon.url class="btn btn-primary">Informações</a>
             </div>
 </div>
         </div>
