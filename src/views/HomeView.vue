@@ -13,11 +13,11 @@ onMounted(() => {
     console.log(response);
   })
 })
-
 </script>
 
 <template>
   <main>
+    <div class="card">
     <div class="container">
       <div class="row mt-4">
 
@@ -48,6 +48,7 @@ onMounted(() => {
         </div>
 
       </div>
+    </div>
     </div>
   </main>
 </template>
