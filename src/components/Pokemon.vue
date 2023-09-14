@@ -1,26 +1,32 @@
 <script setup>
+
+const pokemon = defineProps(["name", "url"]);
+const resultado = pokemon.url.split("/");
+const index = resultado[6];
 </script>
 
 <template>
-  <main>
-    <div class="card">
-    <div class="container">
-      <div class="row mt-4">
-
-        <div class="col-sm-12 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" class="card-img-top" alt="Imagem Pikachu" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
+  <div class="cards" style="width: 18rem;">
+    <div v-if="pokemon.url === 'https://pokeapi.co/api/v2/pokemon/' + this.$route.params.id + '/'">
+      <img :src="`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/dream-world/${index}.svg`" class="img-250" alt="Responsive image" />
+      <div class="card-body">
+        <h5 class="card-title">{{ pokemon.name }}</h5>
+        <p class="card-text">
+          Detalhes....
+        </p>
       </div>
     </div>
-    </div>
-  </main>
+  </div>
 </template>
+
+<style>
+  .cards {
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+  
+  .img-250 {
+   width: 250px;
+}
+}
+</style>
