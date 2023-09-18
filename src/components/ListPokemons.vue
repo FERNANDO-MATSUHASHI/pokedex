@@ -16,7 +16,8 @@ const index = resultado[6];
 
       <div class="text-center">
         <h5 class="card-title">{{ pokemon.name }}</h5>
-        <router-link :to="{ name: 'pokemonId', params: { id: index }}" target="_blank" class="btn btn-primary">Detalhes</router-link>
+        <!-- Para abrir em uma aba nova => target="_blank" -->
+        <router-link :to="{ name: 'pokemonId', params: { id: index }}" class="btn btn-primary">Detalhes</router-link>
       </div>
 
     </div>
