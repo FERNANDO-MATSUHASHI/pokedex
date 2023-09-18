@@ -10,7 +10,7 @@ onMounted(() => {
   .then(response => response.json())
   .then(response => {
     pokemons.value = response.results;
-    console.log(response);
+    //console.log(response);
   })
 })
 </script>
