@@ -1,7 +1,4 @@
 <script setup>
-import { VueElement } from 'vue';
-import Pokemon from '../components/Pokemon.vue';
-
 const pokemon = defineProps(["name", "url"]);
 const resultado = pokemon.url.split("/");
 const index = resultado[6];
@@ -19,7 +16,7 @@ VanillaTilt.init(document.querySelectorAll(".col-3"));
       <div class="text-center">
         <h5 class="card-title">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</h5>
         <!-- Para abrir em uma aba nova => target="_blank" -->
-        <router-link :to="{ name: 'pokemonId', params: { id: index }}" class="btn btn-primary">Detalhes</router-link>
+        <router-link :to="{ name: 'pokemonId', params: { id: index }}" class="btn btn-outline-danger">Detalhes</router-link>
       </div>
 
     </div>
@@ -28,8 +25,7 @@ VanillaTilt.init(document.querySelectorAll(".col-3"));
 
 <style>
   .col-3 {
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 30px;
   }
   .custom-card {
     background-color: #f0f0f0;

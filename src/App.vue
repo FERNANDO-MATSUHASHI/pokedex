@@ -47,7 +47,13 @@ footer{
 }
 
 .main{
+  margin-top: 100px;
   margin-bottom: 100px;
-  overflow: auto;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* overflow-y: scroll; */
+
+  /* max-height: 300vw;
+  height: 60%; */
 }
 </style>

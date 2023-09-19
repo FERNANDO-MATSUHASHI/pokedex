@@ -21,6 +21,9 @@ VanillaTilt.init(document.querySelectorAll(".cards"));
           <li class="list-group-item" v-if="this.abilitys.name">Espécie: {{ this.especie.name }}</li>
           <li class="list-group-item" v-if="this.abilitys.name">Tipo: {{ this.tipo.name }}</li>
         </ul>
+        <div class="btn1">
+          <router-link to="/" class="btn btn-outline-danger btn-sm">Voltar</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -28,19 +31,22 @@ VanillaTilt.init(document.querySelectorAll(".cards"));
 
 <style>
   .cards {
-    border-top: 100px;
     margin: 0 auto;
     float: none;
     margin-bottom: 10px;
-    margin-top: 150px;
   }
 
   .img-250 {
-    width: 250px;
+    width: 200px;
   }
 
   .card-body {
     font-size: 20px;
+  }
+
+  .btn1 {
+    position: relative;
+    left: 100px;
   }
 </style>
 
@@ -57,19 +63,14 @@ export default {
   mounted() {
     const requests = [
       axios.get('https://pokeapi.co/api/v2/pokemon/' + this.$route.params.id + '/'),
-      //axios.get('https://pokeapi.co/api/v2/gender/' + this.$route.params.id + '/'),
     ];
 
     axios.all(requests).then((response) => {
       this.abilitys = response[0].data;
-      //this.genders = response[1].data;
 
       this.abilidade = this.abilitys.abilities[0].ability;
       this.especie = this.abilitys.species;
       this.tipo = this.abilitys.types[0].type;
-
-      //console.log(response[0].data);
-      // console.log(this.especie);
     });
   },
 };
