@@ -4,6 +4,7 @@ const pokemon = defineProps(["name", "url"]);
 const resulted = pokemon.url.split("/");
 const index = resulted[6];
 
+VanillaTilt.init(document.querySelectorAll(".cards"));
 </script>
 
 <template>

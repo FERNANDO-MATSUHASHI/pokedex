@@ -5,6 +5,8 @@ import Pokemon from '../components/Pokemon.vue';
 const pokemon = defineProps(["name", "url"]);
 const resultado = pokemon.url.split("/");
 const index = resultado[6];
+
+VanillaTilt.init(document.querySelectorAll(".col-3"));
 </script>
 
 <template id="form">
