@@ -15,17 +15,17 @@
 
 <style>
 .container {
-  margin-top: 300px;
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .about {
-  background-color: #fff; /* Cor de fundo da div */
-  border: 1px solid #00000088; /* Borda da div */
-  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1); /* Sombreamento da div */
-  padding: 20px; /* Espaçamento interno da div */
-  border-radius: 10%; /* Bordas Aredondadas */
+  background-color: #fff;
+  border: 1px solid #00000088;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10%;
 }
 </style>
