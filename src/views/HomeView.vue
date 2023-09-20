@@ -16,6 +16,12 @@ onMounted(() => {
 <template>
   <main>
     <div class="card">
+      <div class="direita">
+        <input v-model="searchText" type="text">
+        <button @click="search">Pesquisar</button>
+        <p>{{ error }}</p> <!-- Exibe o valor da variável -->
+      </div>
+      
     <div class="container">
       <div class="row mt-4">
         <div>
@@ -42,3 +48,24 @@ onMounted(() => {
   margin-top: 0%;
 }
 </style>
+
+
+<script>
+  export default {
+    data() {
+      return {
+        searchText: '',
+        error: ''
+      }
+    },
+    methods: {
+      search() {
+        this.error = '' // Limpa o campo de erro
+
+        if (!this.searchText) {
+          this.error = 'O campo está vazio'
+        }
+      }
+    },
+  }
+</script>
