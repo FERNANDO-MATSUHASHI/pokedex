@@ -51,9 +51,11 @@ footer{
   margin-bottom: 100px;
   margin-left: 10%;
   margin-right: 10%;
-  /* overflow-y: scroll; */
+}
 
-  /* max-height: 300vw;
-  height: 60%; */
+.direita {
+  margin-right: flex;
+  margin-top: 1%;
+  
 }
 </style>
