@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
 
-let pokemons = reactive(ref());
+let pokemons = ref([]);
+let searchTerm = ref('');
 
 onMounted(() => {
   fetch("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0")
@@ -10,35 +11,42 @@ onMounted(() => {
   .then(response => {
     pokemons.value = response.results;
   })
-})
+});
+
+const filteredPokemons = computed(() => {
+  const term = searchTerm.value.toLowerCase();
+  return pokemons.value.filter(pokemon => pokemon.name.toLowerCase().includes(term));
+});
 </script>
 
 <template>
   <main>
-    <div class="card">
-      <div class="direita">
-        <input v-model="searchText" type="text">
-        <button @click="search">Pesquisar</button>
-        <p>{{ error }}</p> <!-- Exibe o valor da variável -->
-      </div>
-      
     <div class="container">
       <div class="row mt-4">
         <div>
+          <div class="input-group input-group-sm mb-3">
+          <input
+            type="text"
+            class="form-control"
+            v-model="searchTerm"
+            placeholder="Pesquisar Pokémon"
+          />
+          </div>
           <div class="card">
-            <div class="card-body row">
-              <ListPokemons 
-              v-for="pokemon in pokemons"
-              :key="pokemon.name"
-              :name="pokemon.name"
-              :url="pokemon.url"
+            <div class="card-body row" v-if="filteredPokemons.length > 0">
+              <ListPokemons
+                v-for="pokemon in filteredPokemons"
+                :key="pokemon.name"
+                :name="pokemon.name"
+                :url="pokemon.url"
               />
+            </div>
+            <div v-else>
+              Nenhum Pokémon encontrado.
             </div>
           </div>
         </div>
-
       </div>
-    </div>
     </div>
   </main>
 </template>
@@ -48,24 +56,3 @@ onMounted(() => {
   margin-top: 0%;
 }
 </style>
-
-
-<script>
-  export default {
-    data() {
-      return {
-        searchText: '',
-        error: ''
-      }
-    },
-    methods: {
-      search() {
-        this.error = '' // Limpa o campo de erro
-
-        if (!this.searchText) {
-          this.error = 'O campo está vazio'
-        }
-      }
-    },
-  }
-</script>
